@@ -1,0 +1,522 @@
+﻿<krpano version="1.20.6" title="Virtual Tour">
+
+	<include url="skin/vtourskin.xml" />
+    <include url="plugins/showtext.xml"/> 
+	<!-- customize skin settings: maps, gyro, webvr, thumbnails, tooltips, layout, design, ... -->
+	<skin_settings maps="true"
+	               maps_type="google"
+	               maps_bing_api_key=""
+	               maps_google_api_key=""
+	               maps_zoombuttons="false"
+	               maps_loadonfirstuse="true"
+	               gyro="true"
+	               gyro_keeplookingdirection="false"
+	               webvr="true"
+	               webvr_keeplookingdirection="true"
+	               webvr_prev_next_hotspots="true"
+	               autotour="false"
+	               littleplanetintro="false"
+	               followmousecontrol="false"
+	               title="true"
+	               thumbs="true"
+	               thumbs_width="120" thumbs_height="80" thumbs_padding="10" thumbs_crop="0|40|240|160"
+	               thumbs_opened="false"
+	               thumbs_text="false"
+	               thumbs_dragging="true"
+	               thumbs_onhoverscrolling="false"
+	               thumbs_scrollbuttons="false"
+	               thumbs_scrollindicator="false"
+	               thumbs_loop="false"
+	               tooltips_buttons="false"
+	               tooltips_thumbs="false"
+	               tooltips_hotspots="false"
+	               tooltips_mapspots="false"
+	               deeplinking="false"
+	               loadscene_flags="MERGE"
+	               loadscene_blend="OPENBLEND(0.5, 0.0, 0.75, 0.05, linear)"
+	               loadscene_blend_prev="SLIDEBLEND(0.5, 180, 0.75, linear)"
+	               loadscene_blend_next="SLIDEBLEND(0.5,   0, 0.75, linear)"
+	               loadingtext="loading..."
+	               layout_width="100%"
+	               layout_maxwidth="814"
+	               controlbar_width="-24"
+	               controlbar_height="40"
+	               controlbar_offset="20"
+	               controlbar_offset_closed="-40"
+	               controlbar_overlap.no-fractionalscaling="10"
+	               controlbar_overlap.fractionalscaling="0"
+	               design_skin_images="vtourskin.png"
+	               design_bgcolor="0x2D3E50"
+	               design_bgalpha="0.8"
+	               design_bgborder="0"
+	               design_bgroundedge="1"
+	               design_bgshadow="0 4 10 0x000000 0.3"
+	               design_thumbborder_bgborder="3 0xFFFFFF 1.0"
+	               design_thumbborder_padding="2"
+	               design_thumbborder_bgroundedge="0"
+	               design_text_css="color:#FFFFFF; font-family:Arial;"
+	               design_text_shadow="1"
+	               />
+
+	<!--
+	    For an alternative skin design either change the <skin_settings> values 
+	    from above or optionally include one of the predefined designs from below.
+	-->
+	<!-- <include url="skin/vtourskin_design_flat_light.xml"  /> -->
+	<!-- <include url="skin/vtourskin_design_glass.xml"       /> -->
+	<!-- <include url="skin/vtourskin_design_ultra_light.xml" /> -->
+	<!-- <include url="skin/vtourskin_design_117.xml"         /> -->
+	<!-- <include url="skin/vtourskin_design_117round.xml"    /> -->
+	<!-- <include url="skin/vtourskin_design_black.xml"       /> -->
+
+
+	<!-- startup action - load the first scene -->
+	<action name="startup" autorun="onstart">
+		if(startscene === null OR !scene[get(startscene)], copy(startscene,scene[0].name); );
+		loadscene(get(startscene), null, MERGE);
+		if(startactions !== null, startactions() );
+	</action>
+    
+    <action name= "showHotSpot">
+		showtext([img src=%1 height=200px width=300px][/img][p style="color="#FF00FF"" width=300px]%2[/p],Target);
+	</action>
+	
+	<scene name="scene_s1" title="s1" onstart="" thumburl="panos/s1.tiles/thumb.jpg" lat="20.98461619" lng="105.94655794" heading="0.0">
+
+		<view hlookat="16.681" vlookat="34.548" fovtype="MFOV" fov="119.998" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/s1.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/s1.tiles/pano_%s.jpg" />
+		</image>
+		<hotspot name="spot1" style="skin_hotspotstyle_line" ath="-29.139" atv="6.825" distorted="false" zoom="false" linkedscene="scene_s2" onhover="action(showHotSpot,panos/s2.tiles/thumb.jpg,Tổng thể hướng nhìn từ đường cao tốc Hà Nội - Hải Phòng)"/>
+		<hotspot name="spot2" style="skin_hotspotstyle_line" ath="-7.463" atv="4.682" distorted="false" zoom="false" linkedscene="scene_s3" onhover="action(showHotSpot,panos/s3.tiles/thumb.jpg,Tổng thể dự án nhìn từ hướng Tây Bắc)"/>
+		<hotspot name="spot3" style="skin_hotspotstyle_line" ath="-36.418" atv="15.799" distorted="false" zoom="false" linkedscene="scene_s4" onhover="action(showHotSpot,panos/s4.tiles/thumb.jpg,Cảnh quan hồ San Hô)"/>
+		<hotspot name="spot4" style="skin_hotspotstyle_line" ath="-19.410" atv="39.433" distorted="false" zoom="false" linkedscene="scene_s5" onhover="action(showHotSpot,panos/s5.tiles/thumb.jpg,Trường Đại học VinUni)"/>
+		<hotspot name="spot5" style="skin_hotspotstyle_line" ath="33.740" atv="18.794" distorted="false" zoom="false" linkedscene="scene_s6" onhover="action(showHotSpot,panos/s6.tiles/thumb.jpg,Hồ Ngọc Trai)"/>
+		<hotspot name="spot6" style="skin_hotspotstyle_line" ath="54.490" atv="13.081" distorted="false" zoom="false" linkedscene="scene_s7" onhover="action(showHotSpot,panos/s7.tiles/thumb.jpg,BIỂN HỒ NƯỚC MẶN)"/>
+        
+<!--        noi khu-->
+		<hotspot name="spot7" style="skin_hotspotstyle_nen" ath="-8.491" atv="13.803" distorted="false" zoom="false" linkedscene="scene_s2" />
+		<hotspot name="spot8" style="skin_hotspotstyle_nen" ath="-25.131" atv="21.779" distorted="false" zoom="false" linkedscene="scene_s2" />
+		<hotspot name="spot9" style="skin_hotspotstyle_nen" ath="-18.494" atv="43.060" distorted="false" zoom="false" linkedscene="scene_s2" />
+		<hotspot name="spot10" style="skin_hotspotstyle_nen" ath="14.010" atv="27.541" distorted="false" zoom="false" linkedscene="scene_s2" />
+		<hotspot name="spot11" style="skin_hotspotstyle_nen" ath="16.547" atv="16.589" distorted="false" zoom="false" linkedscene="scene_s2" />
+		<hotspot name="spot12" style="skin_hotspotstyle" ath="35.650" atv="21.761" distorted="false" zoom="false" linkedscene="scene_s2" />
+		<hotspot name="spot13" style="skin_hotspotstyle_nen" ath="36.810" atv="11.074" distorted="false" zoom="false" linkedscene="scene_s2" />
+		<hotspot name="spot14" style="skin_hotspotstyle" ath="54.817" atv="10.129" distorted="false" zoom="false" linkedscene="scene_s2" />
+		<hotspot name="spot15" style="skin_hotspotstyle_nen" ath="59.496" atv="22.187" distorted="false" zoom="false" linkedscene="scene_s2" />
+        
+        <layer name="text7" url="textfield.swf" css="font-weight: bold;" parent="hotspot[spot7]" align="center" html="SAPPHIRE 1" background="false" />
+        <layer name="text8" url="textfield.swf" css="font-weight: bold;" parent="hotspot[spot8]" align="center" html="SAPPHIRE 2" background="false" />
+        <layer name="text9" url="textfield.swf" css="font-weight: bold;" parent="hotspot[spot9]" align="center" html="ĐH VinUni" background="false" />
+        <layer name="text10" url="textfield.swf" css="font-weight: bold;" parent="hotspot[spot10]" align="center" html="SAN HÔ" background="false" />
+        <layer name="text11" url="textfield.swf" css="font-weight: bold;" parent="hotspot[spot11]" align="center" html="NGỌC TRAI" background="false" />
+        <layer name="text12" url="textfield.swf" css="font-weight: bold; color:yellow;" parent="hotspot[spot12]" align="center" html="Hồ Ngọc Trai" background="false" />
+        <layer name="text13" url="textfield.swf" css="font-weight: bold;" parent="hotspot[spot13]" align="center" html="SAO BIỂN" background="false" />
+        <layer name="text14" url="textfield.swf" css="font-weight: bold; color:yellow;" parent="hotspot[spot14]" align="center" html="BIỂN HỒ NƯỚC MẶN" background="false" />
+        <layer name="text15" url="textfield.swf" css="font-weight: bold;" parent="hotspot[spot15]" align="center" html="HẢI ÂU" background="false" />
+        
+		<hotspot name="spot16" style="skin_hotspotstyle" ath="-113.208" atv="52.668" linkedscene="scene_s2" />
+		<hotspot name="spot17" style="skin_hotspotstyle" ath="-40.524" atv="33.574" linkedscene="scene_s2" />
+		<hotspot name="spot18" style="skin_hotspotstyle" ath="-41.530" atv="21.086" linkedscene="scene_s2" />
+		<hotspot name="spot19" style="skin_hotspotstyle" ath="31.350" atv="5.644" linkedscene="scene_s2" />
+        
+        <layer name="text16" url="textfield.swf" css="font-weight: bold;color:yellow; font-size:30px" parent="hotspot[spot16]" align="center" html="CAO TỐC HÀ NỘI - HẢI PHÒNG " background="false" />
+        <layer name="text17" url="textfield.swf" css="font-weight: bold;color:yellow; font-size:20px" parent="hotspot[spot17]" align="center" html="ĐẠI LỘ 52" background="false" />
+        <layer name="text18" url="textfield.swf" css="font-weight: bold;color:yellow;" parent="hotspot[spot18]" align="center" html="HỒ SAN HÔ" background="false" />
+        <layer name="text19" url="textfield.swf" css="font-weight: bold; color:yellow; font-size:20px" parent="hotspot[spot19]" align="center" html="QUỐC LỘ 5" background="false" />
+        
+		<hotspot name="spot20" style="skin_hotspotstyle" ath="-77.718" atv="1.886" linkedscene="scene_s2" />
+		<hotspot name="spot21" style="skin_hotspotstyle" ath="-61.120" atv="-0.676" linkedscene="scene_s2" />
+        
+        <layer name="text20" url="textfield.swf" css="font-weight: bold;color:yellow;font-size:16px" parent="hotspot[spot20]" align="center" html="CẦU THANH TRÌ" background="false" />
+        <layer name="text21" url="textfield.swf" css="font-weight: bold; color:yellow; font-size:16px" parent="hotspot[spot21]" align="center" html="CẦU VĨNH TUY" background="false" />
+        
+        
+		<hotspot name="spot22" style="skin_hotspotstyle" ath="69.643" atv="37.504" linkedscene="scene_s2" />
+		<hotspot name="spot23" style="skin_hotspotstyle" ath="62.788" atv="10.394" linkedscene="scene_s2" />
+		<hotspot name="spot24" style="skin_hotspotstyle_nen" distorted="false" zoom="false" ath="-1.611" atv="7.642" linkedscene="scene_s2" />
+		<hotspot name="spot25" style="skin_hotspotstyle" ath="-81.392" atv="31.863" linkedscene="scene_s2" />
+		
+		<layer name="text22" url="textfield.swf" css="font-weight: bold;color:yellow;font-size:16px" parent="hotspot[spot22]" align="center" html="BV VINMEC" background="false" />
+        <layer name="text23" url="textfield.swf" css="font-weight: bold; color:yellow; font-size:12px" parent="hotspot[spot23]" align="center" html="VINCOM MEGAMALL" background="false" />
+        <layer name="text24" url="textfield.swf" css="font-weight: bold;" parent="hotspot[spot24]" align="center" html="RUBY" background="false" />
+        <layer name="text25" url="textfield.swf" css="font-weight: bold; color:yellow; font-size:16px" parent="hotspot[spot25]" align="center" html="VIN WONDERS" background="false" />
+		
+		<hotspot name="spot26" style="skin_hotspotstyle_nen" ath="-25.898" atv="18.194" linkedscene="scene_s2" />
+		<hotspot name="spot27" style="skin_hotspotstyle_nen" ath="-35.507" atv="27.287" linkedscene="scene_s2" />
+		
+		<layer name="text26" url="textfield.swf" css="font-weight: bold;" parent="hotspot[spot26]" align="center" html="Nhà để xe" background="false" />
+        <layer name="text27" url="textfield.swf" css="font-weight: bold;" parent="hotspot[spot27]" align="center" html="Tòa nhà văn phòng" background="false" />
+
+	</scene>
+
+	<scene name="scene_s2" title="s2" onstart="" thumburl="panos/s2.tiles/thumb.jpg" lat="20.98808694" lng="105.93701861" heading="0.0">
+
+		<view hlookat="-5.228" vlookat="36.705" fovtype="MFOV" fov="102.385" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/s2.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/s2.tiles/pano_%s.jpg" />
+		</image>
+		<hotspot name="spot1" style="skin_hotspotstyle_line" ath="-15.107" atv="47.169" distorted="false" zoom="false" linkedscene="scene_s4" onhover="action(showHotSpot,panos/s4.tiles/thumb.jpg,Cảnh quan hồ San Hô)"/>
+		<hotspot name="spot2" style="skin_hotspotstyle_line" ath="50.210" atv="7.239" distorted="false" zoom="false" linkedscene="scene_s1" onhover="action(showHotSpot,panos/s1.tiles/thumb.jpg,Tổng thể dự án nhìn từ hướng Nam)"/>
+		<hotspot name="spot3" style="skin_hotspotstyle_line" ath="34.915" atv="26.085" distorted="false" zoom="false" linkedscene="scene_s5" onhover="action(showHotSpot,panos/s5.tiles/thumb.jpg,Trường Đại học VinUni)"/>
+		<hotspot name="spot4" style="skin_hotspotstyle_line" ath="18.149" atv="8.575" distorted="false" zoom="false" linkedscene="scene_s7" onhover="action(showHotSpot,panos/s7.tiles/thumb.jpg,BIỂN HỒ NƯỚC MẶN)"/>
+		<hotspot name="spot5" style="skin_hotspotstyle_line" ath="14.179" atv="12.709" distorted="false" zoom="false" linkedscene="scene_s6" onhover="action(showHotSpot,panos/s6.tiles/thumb.jpg,Hồ Ngọc Trai)"/>
+		<hotspot name="spot6" style="skin_hotspotstyle_line" ath="-38.550" atv="10.639" distorted="false" zoom="false" linkedscene="scene_s3" onhover="action(showHotSpot,panos/s3.tiles/thumb.jpg,Tổng thể dự án nhìn từ hướng Tây Bắc)"/>
+
+        <!--        noi khu-->
+		<hotspot name="spot7" style="skin_hotspotstyle_nen" ath="-16.029" atv="17.693" distorted="false" zoom="false" linkedscene="scene_s2" />
+		<hotspot name="spot8" style="skin_hotspotstyle_nen" ath="-0.223" atv="26.014" distorted="false" zoom="false" linkedscene="scene_s2" />
+		<hotspot name="spot9" style="skin_hotspotstyle_nen" ath="29.259" atv="20.957" distorted="false" zoom="false" linkedscene="scene_s2" />
+		<hotspot name="spot10" style="skin_hotspotstyle_nen" ath="17.203" atv="17.885" distorted="false" zoom="false" linkedscene="scene_s2" />
+		<hotspot name="spot11" style="skin_hotspotstyle_nen" ath="-1.370" atv="14.492" distorted="false" zoom="false" linkedscene="scene_s2" />
+		<hotspot name="spot12" style="skin_hotspotstyle" ath="16.372" atv="15.005" distorted="false" zoom="false" linkedscene="scene_s2" />
+		<hotspot name="spot13" style="skin_hotspotstyle_nen" ath="7.632" atv="8.743" distorted="false" zoom="false" linkedscene="scene_s2" />
+		<hotspot name="spot14" style="skin_hotspotstyle" ath="18.267" atv="10.246" distorted="false" zoom="false" linkedscene="scene_s3" />
+		<hotspot name="spot15" style="skin_hotspotstyle_nen" ath="30.214" atv="12.170" distorted="false" zoom="false" linkedscene="scene_s2" />
+        
+        <layer name="text7" url="textfield.swf" css="font-weight: bold;" parent="hotspot[spot7]" align="center" html="SAPPHIRE 1" background="false" />
+        <layer name="text8" url="textfield.swf" css="font-weight: bold;" parent="hotspot[spot8]" align="center" html="SAPPHIRE 2" background="false" />
+        <layer name="text9" url="textfield.swf" css="font-weight: bold;" parent="hotspot[spot9]" align="center" html="ĐH VinUni" background="false" />
+        <layer name="text10" url="textfield.swf" css="font-weight: bold;" parent="hotspot[spot10]" align="center" html="SAN HÔ" background="false" />
+        <layer name="text11" url="textfield.swf" css="font-weight: bold;" parent="hotspot[spot11]" align="center" html="NGỌC TRAI" background="false" />
+        <layer name="text12" url="textfield.swf" css="font-weight: bold; color:yellow;" parent="hotspot[spot12]" align="center" html="Hồ Ngọc Trai" background="false" />
+        <layer name="text13" url="textfield.swf" css="font-weight: bold;" parent="hotspot[spot13]" align="center" html="SAO BIỂN" background="false" />
+        <layer name="text14" url="textfield.swf" css="font-weight: bold; color:yellow;" parent="hotspot[spot14]" align="center" html="BIỂN HỒ NƯỚC MẶN" background="false" />
+        <layer name="text15" url="textfield.swf" css="font-weight: bold;" parent="hotspot[spot15]" align="center" html="HẢI ÂU" background="false" />
+        
+		<hotspot name="spot16" style="skin_hotspotstyle" ath="-4.493" atv="57.777" linkedscene="scene_s2" />
+		<hotspot name="spot17" style="skin_hotspotstyle" ath="36.674" atv="36.943" linkedscene="scene_s2" />
+		<hotspot name="spot18" style="skin_hotspotstyle" ath="-2.574" atv="50.135" linkedscene="scene_s2" />
+		<hotspot name="spot19" style="skin_hotspotstyle" ath="-9.359" atv="4.892" linkedscene="scene_s2" />
+        
+        <layer name="text16" url="textfield.swf" css="font-weight: bold;color:yellow; font-size:30px" parent="hotspot[spot16]" align="center" html="CAO TỐC HÀ NỘI - HẢI PHÒNG " background="false" />
+        <layer name="text17" url="textfield.swf" css="font-weight: bold;color:yellow; font-size:16px" parent="hotspot[spot17]" align="center" html="ĐẠI LỘ 52" background="false" />
+        <layer name="text18" url="textfield.swf" css="font-weight: bold;color:yellow;font-size:16px" parent="hotspot[spot18]" align="center" html="HỒ SAN HÔ" background="false" />
+        <layer name="text19" url="textfield.swf" css="font-weight: bold; color:yellow; font-size:20px" parent="hotspot[spot19]" align="center" html="QUỐC LỘ 5" background="false" />
+        
+		<hotspot name="spot20" style="skin_hotspotstyle" ath="-140.089" atv="3.220" linkedscene="scene_s2" />
+		<hotspot name="spot21" style="skin_hotspotstyle" ath="-119.166" atv="1.125" linkedscene="scene_s2" />
+        
+        <layer name="text20" url="textfield.swf" css="font-weight: bold;color:yellow;font-size:16px" parent="hotspot[spot20]" align="center" html="CẦU THANH TRÌ" background="false" />
+        <layer name="text21" url="textfield.swf" css="font-weight: bold; color:yellow; font-size:16px" parent="hotspot[spot21]" align="center" html="CẦU VĨNH TUY" background="false" />
+        
+        		<hotspot name="spot22" style="skin_hotspotstyle" ath="40.724" atv="13.820" linkedscene="scene_s2" />
+		<hotspot name="spot23" style="skin_hotspotstyle" ath="21.390" atv="6.980" linkedscene="scene_s2" />
+		<hotspot name="spot24" style="skin_hotspotstyle_nen" distorted="false" zoom="false" ath="-29.608" atv="10.031" linkedscene="scene_s2" />
+		<hotspot name="spot25" style="skin_hotspotstyle" ath="-48.943" atv="65.972" linkedscene="scene_s2" />
+		
+		<layer name="text22" url="textfield.swf" css="font-weight: bold;color:yellow;font-size:16px" parent="hotspot[spot22]" align="center" html="BV VINMEC" background="false" />
+        <layer name="text23" url="textfield.swf" css="font-weight: bold; color:yellow; font-size:12px" parent="hotspot[spot23]" align="center" html="VINCOM MEGAMALL" background="false" />
+        <layer name="text24" url="textfield.swf" css="font-weight: bold;" parent="hotspot[spot24]" align="center" html="RUBY" background="false" />
+        <layer name="text25" url="textfield.swf" css="font-weight: bold; color:yellow; font-size:16px" parent="hotspot[spot25]" align="center" html="VIN WONDERS" background="false" />
+		
+				<hotspot name="spot26" style="skin_hotspotstyle_nen" ath="-9.073" atv="30.540" linkedscene="scene_s2" />
+		<hotspot name="spot27" style="skin_hotspotstyle_nen" ath="24.925" atv="34.710" linkedscene="scene_s2" />
+		
+		<layer name="text26" url="textfield.swf" css="font-weight: bold;" parent="hotspot[spot26]" align="center" html="Nhà để xe" background="false" />
+        <layer name="text27" url="textfield.swf" css="font-weight: bold;" parent="hotspot[spot27]" align="center" html="Tòa nhà văn phòng" background="false" />
+	</scene>
+
+	<scene name="scene_s3" title="s3" onstart="" thumburl="panos/s3.tiles/thumb.jpg" lat="21.00211872" lng="105.94192781" heading="0.0">
+
+		<view hlookat="-3.110" vlookat="18.615" fovtype="MFOV" fov="111.457" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/s3.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/s3.tiles/pano_%s.jpg" />
+		</image>
+		<hotspot name="spot1" style="skin_hotspotstyle_line" ath="-24.970" atv="9.777" distorted="false" zoom="false" linkedscene="scene_s7" onhover="action(showHotSpot,panos/s7.tiles/thumb.jpg,BIỂN HỒ NƯỚC MẶN)"/>
+		<hotspot name="spot2" style="skin_hotspotstyle_line" ath="-9.622" atv="14.554" distorted="false" zoom="false" linkedscene="scene_s6" onhover="action(showHotSpot,panos/s6.tiles/thumb.jpg,Hồ Ngọc Trai)"/>
+		<hotspot name="spot3" style="skin_hotspotstyle_line" ath="21.427" atv="11.092" distorted="false" zoom="false" linkedscene="scene_s5" onhover="action(showHotSpot,panos/s5.tiles/thumb.jpg,Trường Đại học VinUni)"/>
+		<hotspot name="spot4" style="skin_hotspotstyle_line" ath="6.197" atv="5.854" distorted="false" zoom="false" linkedscene="scene_s1" onhover="action(showHotSpot,panos/s1.tiles/thumb.jpg,Tổng thể dự án nhìn từ hướng Nam)"/>
+		<hotspot name="spot5" style="skin_hotspotstyle_line" ath="52.560" atv="10.561" distorted="false" zoom="false" linkedscene="scene_s2" onhover="action(showHotSpot,panos/s2.tiles/thumb.jpg,Tổng thể hướng nhìn từ đường cao tốc Hà Nội - Hải Phòng)"/>
+
+        <!--        noi khu-->
+		<hotspot name="spot7" style="skin_hotspotstyle_nen" ath="30.524" atv="20.924" distorted="false" zoom="false" linkedscene="scene_s2" />
+		<hotspot name="spot8" style="skin_hotspotstyle_nen" ath="37.948" atv="13.784" distorted="false" zoom="false" linkedscene="scene_s2" />
+		<hotspot name="spot9" style="skin_hotspotstyle_nen" ath="21.147" atv="9.054" distorted="false" zoom="false" linkedscene="scene_s2" />
+		<hotspot name="spot10" style="skin_hotspotstyle_nen" ath="8.865" atv="16.188" distorted="false" zoom="false" linkedscene="scene_s2" />
+		<hotspot name="spot11" style="skin_hotspotstyle_nen" ath="-13.384" atv="28.009" distorted="false" zoom="false" linkedscene="scene_s2" />
+		<hotspot name="spot12" style="skin_hotspotstyle" ath="-8.234" atv="16.167" distorted="false" zoom="false" linkedscene="scene_s2" />
+		<hotspot name="spot13" style="skin_hotspotstyle_nen" ath="-31.712" atv="15.841" distorted="false" zoom="false" linkedscene="scene_s2" />
+		<hotspot name="spot14" style="skin_hotspotstyle" ath="-24.845" atv="11.810" distorted="false" zoom="false" linkedscene="scene_s2" />
+		<hotspot name="spot15" style="skin_hotspotstyle_nen" ath="-9.056" atv="10.183" distorted="false" zoom="false" linkedscene="scene_s2" />
+        
+        <layer name="text7" url="textfield.swf" css="font-weight: bold;" parent="hotspot[spot7]" align="center" html="SAPPHIRE 1" background="false" />
+        <layer name="text8" url="textfield.swf" css="font-weight: bold;" parent="hotspot[spot8]" align="center" html="SAPPHIRE 2" background="false" />
+        <layer name="text9" url="textfield.swf" css="font-weight: bold;" parent="hotspot[spot9]" align="center" html="ĐH VinUni" background="false" />
+        <layer name="text10" url="textfield.swf" css="font-weight: bold;" parent="hotspot[spot10]" align="center" html="SAN HÔ" background="false" />
+        <layer name="text11" url="textfield.swf" css="font-weight: bold;" parent="hotspot[spot11]" align="center" html="NGỌC TRAI" background="false" />
+        <layer name="text12" url="textfield.swf" css="font-weight: bold; color:yellow;" parent="hotspot[spot12]" align="center" html="Hồ Ngọc Trai" background="false" />
+        <layer name="text13" url="textfield.swf" css="font-weight: bold;" parent="hotspot[spot13]" align="center" html="SAO BIỂN" background="false" />
+        <layer name="text14" url="textfield.swf" css="font-weight: bold; color:yellow;" parent="hotspot[spot14]" align="center" html="BIỂN HỒ NƯỚC MẶN" background="false" />
+        <layer name="text15" url="textfield.swf" css="font-weight: bold;" parent="hotspot[spot15]" align="center" html="HẢI ÂU" background="false" />
+        
+		<hotspot name="spot16" style="skin_hotspotstyle" ath="84.609" atv="18.282" linkedscene="scene_s2" />
+		<hotspot name="spot17" style="skin_hotspotstyle" ath="2.855" atv="21.456" linkedscene="scene_s2" />
+		<hotspot name="spot18" style="skin_hotspotstyle" ath="62.420" atv="18.867" linkedscene="scene_s2" />
+		<hotspot name="spot19" style="skin_hotspotstyle" ath="-95.696" atv="13.425" linkedscene="scene_s2" />
+        
+        <layer name="text16" url="textfield.swf" css="font-weight: bold;color:yellow; font-size:20px" parent="hotspot[spot16]" align="center" html="CAO TỐC HÀ NỘI - HẢI PHÒNG " background="false" />
+        <layer name="text17" url="textfield.swf" css="font-weight: bold;color:yellow; font-size:20px" parent="hotspot[spot17]" align="center" html="ĐẠI LỘ 52" background="false" />
+        <layer name="text18" url="textfield.swf" css="font-weight: bold;color:yellow;" parent="hotspot[spot18]" align="center" html="HỒ SAN HÔ" background="false" />
+        <layer name="text19" url="textfield.swf" css="font-weight: bold; color:yellow; font-size:20px" parent="hotspot[spot19]" align="center" html="QUỐC LỘ 5" background="false" />
+        
+		<hotspot name="spot20" style="skin_hotspotstyle" ath="108.464" atv="2.114" linkedscene="scene_s2" />
+		<hotspot name="spot21" style="skin_hotspotstyle" ath="135.278" atv="0.881" linkedscene="scene_s2" />
+        
+        <layer name="text20" url="textfield.swf" css="font-weight: bold;color:yellow;font-size:16px" parent="hotspot[spot20]" align="center" html="CẦU THANH TRÌ" background="false" />
+        <layer name="text21" url="textfield.swf" css="font-weight: bold; color:yellow; font-size:16px" parent="hotspot[spot21]" align="center" html="CẦU VĨNH TUY" background="false" />
+        
+        		<hotspot name="spot22" style="skin_hotspotstyle" ath="4.661" atv="10.564" linkedscene="scene_s2" />
+		<hotspot name="spot23" style="skin_hotspotstyle" ath="-32.088" atv="8.521" linkedscene="scene_s2" />
+		<hotspot name="spot24" style="skin_hotspotstyle_nen" distorted="false" zoom="false" ath="-16.235" atv="59.387" linkedscene="scene_s2" />
+		<hotspot name="spot25" style="skin_hotspotstyle" ath="41.770" atv="10.851" linkedscene="scene_s2" />
+		
+		<layer name="text22" url="textfield.swf" css="font-weight: bold;color:yellow;font-size:16px" parent="hotspot[spot22]" align="center" html="BV VINMEC" background="false" />
+        <layer name="text23" url="textfield.swf" css="font-weight: bold; color:yellow; font-size:12px" parent="hotspot[spot23]" align="center" html="VINCOM MEGAMALL" background="false" />
+        <layer name="text24" url="textfield.swf" css="font-weight: bold;" parent="hotspot[spot24]" align="center" html="RUBY" background="false" />
+        <layer name="text25" url="textfield.swf" css="font-weight: bold; color:yellow; font-size:16px" parent="hotspot[spot25]" align="center" html="VIN WONDERS" background="false" />
+		
+				<hotspot name="spot26" style="skin_hotspotstyle_nen" ath="43.641" atv="17.540" linkedscene="scene_s2" />
+		<hotspot name="spot27" style="skin_hotspotstyle_nen" ath="36.051" atv="11.216" linkedscene="scene_s2" />
+		
+		<layer name="text26" url="textfield.swf" css="font-weight: bold;" parent="hotspot[spot26]" align="center" html="Nhà để xe" background="false" />
+        <layer name="text27" url="textfield.swf" css="font-weight: bold;" parent="hotspot[spot27]" align="center" html="Tòa nhà văn phòng" background="false" />
+	</scene>
+
+	<scene name="scene_s4" title="s4" onstart="" thumburl="panos/s4.tiles/thumb.jpg" lat="20.99021072" lng="105.93897472" heading="0.0">
+
+		<view hlookat="17.456" vlookat="6.274" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/s4.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/s4.tiles/pano_%s.jpg" />
+		</image>
+		<hotspot name="spot1" style="skin_hotspotstyle_line" ath="129.958" atv="-5.355" distorted="false" zoom="false" linkedscene="scene_s2" onhover="action(showHotSpot,panos/s2.tiles/thumb.jpg,Tổng thể hướng nhìn từ đường cao tốc Hà Nội - Hải Phòng)"/>
+		<hotspot name="spot2" style="skin_hotspotstyle_line" ath="61.511" atv="-19.548" distorted="false" zoom="false" linkedscene="scene_s1" onhover="action(showHotSpot,panos/s1.tiles/thumb.jpg,Tổng thể dự án nhìn từ hướng Nam)"/>
+
+        <!--        noi khu-->
+		
+		<hotspot name="spot8" style="skin_hotspotstyle_nen" ath="26.459" atv="-17.132" distorted="false" zoom="false" linkedscene="scene_s2" />
+		
+
+        <layer name="text8" url="textfield.swf" css="font-weight: bold;" parent="hotspot[spot8]" align="center" html="SAPPHIRE 2" background="false" />
+
+		<hotspot name="spot16" style="skin_hotspotstyle" ath="-173.311" atv="76.161" linkedscene="scene_s2" />
+		
+		<hotspot name="spot18" style="skin_hotspotstyle" ath="14.495" atv="51.770" linkedscene="scene_s2" />
+		
+        
+        <layer name="text16" url="textfield.swf" css="font-weight: bold;color:yellow; font-size:30px" parent="hotspot[spot16]" align="center" html="CAO TỐC HÀ NỘI - HẢI PHÒNG " background="false" />
+        <layer name="text18" url="textfield.swf" css="font-weight: bold;color:yellow;font-size:20px" parent="hotspot[spot18]" align="center" html="HỒ SAN HÔ" background="false" />
+
+        
+		<hotspot name="spot20" style="skin_hotspotstyle" ath="-77.718" atv="1.886" linkedscene="scene_s2" />
+		
+				
+		
+		
+		<hotspot name="spot25" style="skin_hotspotstyle" ath="151.033" atv="8.364" linkedscene="scene_s2" />
+		
+        <layer name="text25" url="textfield.swf" css="font-weight: bold; color:yellow; font-size:16px" parent="hotspot[spot25]" align="center" html="VIN WONDERS" background="false" />
+		
+				
+		<hotspot name="spot27" style="skin_hotspotstyle_nen" ath="71.154" atv="-7.934" linkedscene="scene_s2" />
+        <layer name="text27" url="textfield.swf" css="font-weight: bold;" parent="hotspot[spot27]" align="center" html="Tòa nhà văn phòng" background="false" />
+		<hotspot name="spot3" style="skin_hotspotstyle_line" ath="-42.986" atv="-16.727" linkedscene="scene_s3" onhover="action(showHotSpot,panos/s3.tiles/thumb.jpg,Tổng thể dự án nhìn từ hướng Tây Bắc)"/>
+		<hotspot name="spot4" style="skin_hotspotstyle_line" ath="79.614" atv="-1.938" linkedscene="scene_s5" onhover="action(showHotSpot,panos/s5.tiles/thumb.jpg,Trường Đại học VinUni)"/>
+
+	</scene>
+
+	<scene name="scene_s5" title="s5" onstart="" thumburl="panos/s5.tiles/thumb.jpg" lat="20.98741006" lng="105.94382233" heading="0.0">
+
+		<view hlookat="0.231" vlookat="8.338" fovtype="MFOV" fov="97.691" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/s5.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/s5.tiles/pano_%s.jpg" />
+		</image>
+		<hotspot name="spot1" style="skin_hotspotstyle_line" ath="-89.405" atv="-14.992" distorted="false" zoom="false" linkedscene="scene_s2" onhover="action(showHotSpot,panos/s2.tiles/thumb.jpg,Tổng thể hướng nhìn từ đường cao tốc Hà Nội - Hải Phòng)"/>
+		<hotspot name="spot2" style="skin_hotspotstyle_line" ath="84.894" atv="-7.036" distorted="false" zoom="false" linkedscene="scene_s1" onhover="action(showHotSpot,panos/s1.tiles/thumb.jpg,Tổng thể dự án nhìn từ hướng Nam)"/>
+
+        <!--        noi khu-->
+		
+		<hotspot name="spot8" style="skin_hotspotstyle_nen" ath="-49.134" atv="-10.546" distorted="false" zoom="false" linkedscene="scene_s2" />
+		<hotspot name="spot9" style="skin_hotspotstyle_nen" ath="0.741" atv="7.022" distorted="false" zoom="false" linkedscene="scene_s2" />
+		<hotspot name="spot10" style="skin_hotspotstyle_nen" ath="14.055" atv="2.282" distorted="false" zoom="false" linkedscene="scene_s2" />
+		<hotspot name="spot11" style="skin_hotspotstyle_nen" ath="-16.225" atv="-0.109" distorted="false" zoom="false" linkedscene="scene_s2" />
+		<hotspot name="spot12" style="skin_hotspotstyle" ath="18.548" atv="0.719" distorted="false" zoom="false" linkedscene="scene_s2" />
+		<hotspot name="spot13" style="skin_hotspotstyle_nen" ath="16.341" atv="-2.094" distorted="false" zoom="false" linkedscene="scene_s2" />
+		
+		<hotspot name="spot15" style="skin_hotspotstyle_nen" ath="38.058" atv="1.439" distorted="false" zoom="false" linkedscene="scene_s2" />
+        
+
+        <layer name="text8" url="textfield.swf" css="font-weight: bold;" parent="hotspot[spot8]" align="center" html="SAPPHIRE 2" background="false" />
+        <layer name="text9" url="textfield.swf" css="font-weight: bold;" parent="hotspot[spot9]" align="center" html="ĐH VinUni" background="false" />
+        <layer name="text10" url="textfield.swf" css="font-weight: bold;" parent="hotspot[spot10]" align="center" html="SAN HÔ" background="false" />
+        <layer name="text11" url="textfield.swf" css="font-weight: bold;" parent="hotspot[spot11]" align="center" html="NGỌC TRAI" background="false" />
+        <layer name="text12" url="textfield.swf" css="font-weight: bold; color:yellow;" parent="hotspot[spot12]" align="center" html="Hồ Ngọc Trai" background="false" />
+        <layer name="text13" url="textfield.swf" css="font-weight: bold;" parent="hotspot[spot13]" align="center" html="SAO BIỂN" background="false" />
+        <layer name="text15" url="textfield.swf" css="font-weight: bold;" parent="hotspot[spot15]" align="center" html="HẢI ÂU" background="false" />
+        
+		<hotspot name="spot16" style="skin_hotspotstyle" ath="-150.346" atv="7.500" linkedscene="scene_s2" />
+		<hotspot name="spot17" style="skin_hotspotstyle" ath="-79.185" atv="13.325" linkedscene="scene_s2" />
+		<hotspot name="spot18" style="skin_hotspotstyle" ath="-90.455" atv="4.613" linkedscene="scene_s2" />
+		
+        
+        <layer name="text16" url="textfield.swf" css="font-weight: bold;color:yellow; font-size:20px" parent="hotspot[spot16]" align="center" html="CAO TỐC HÀ NỘI - HẢI PHÒNG " background="false" />
+        <layer name="text17" url="textfield.swf" css="font-weight: bold;color:yellow; font-size:20px" parent="hotspot[spot17]" align="center" html="ĐẠI LỘ 52" background="false" />
+        <layer name="text18" url="textfield.swf" css="font-weight: bold;color:yellow;" parent="hotspot[spot18]" align="center" html="HỒ SAN HÔ" background="false" />
+        
+		<hotspot name="spot20" style="skin_hotspotstyle" ath="-77.718" atv="1.886" linkedscene="scene_s2" />
+		<hotspot name="spot21" style="skin_hotspotstyle" ath="-61.120" atv="-0.676" linkedscene="scene_s2" />
+       
+       		<hotspot name="spot22" style="skin_hotspotstyle" ath="59.986" atv="1.269" linkedscene="scene_s2" />
+		<hotspot name="spot23" style="skin_hotspotstyle" ath="35.462" atv="-1.738" linkedscene="scene_s2" />
+		
+		<hotspot name="spot25" style="skin_hotspotstyle" ath="-137.399" atv="3.812" linkedscene="scene_s2" />
+		
+		<layer name="text22" url="textfield.swf" css="font-weight: bold;color:yellow;font-size:16px" parent="hotspot[spot22]" align="center" html="BV VINMEC" background="false" />
+        <layer name="text23" url="textfield.swf" css="font-weight: bold; color:yellow; font-size:12px" parent="hotspot[spot23]" align="center" html="VINCOM MEGAMALL" background="false" />
+        <layer name="text25" url="textfield.swf" css="font-weight: bold; color:yellow; font-size:16px" parent="hotspot[spot25]" align="center" html="VIN WONDERS" background="false" />
+        
+				
+		<hotspot name="spot27" style="skin_hotspotstyle_nen" ath="-80.308" atv="-4.597" linkedscene="scene_s2" />
+        <layer name="text27" url="textfield.swf" css="font-weight: bold;" parent="hotspot[spot27]" align="center" html="Tòa nhà văn phòng" background="false" />
+		<hotspot name="spot3" style="skin_hotspotstyle_line" ath="23.251" atv="-1.897" linkedscene="scene_s6" onhover="action(showHotSpot,panos/s6.tiles/thumb.jpg,Hồ Ngọc Trai)"/>
+		<hotspot name="spot4" style="skin_hotspotstyle_line" ath="29.796" atv="-4.367" linkedscene="scene_s7" onhover="action(showHotSpot,panos/s7.tiles/thumb.jpg,BIỂN HỒ NƯỚC MẶN)"/>
+	</scene>
+
+	<scene name="scene_s6" title="s6" onstart="" thumburl="panos/s6.tiles/thumb.jpg" lat="20.99270269" lng="105.95144536" heading="0.0">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/s6.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/s6.tiles/pano_%s.jpg" />
+		</image>
+		<hotspot name="spot1" style="skin_hotspotstyle_line" ath="-179.137" atv="-3.341" distorted="false" zoom="false" linkedscene="scene_s5" onhover="action(showHotSpot,panos/s5.tiles/thumb.jpg,Trường Đại học VinUni)"/>
+		<hotspot name="spot2" style="skin_hotspotstyle_line" ath="159.295" atv="-9.292" distorted="false" zoom="false" linkedscene="scene_s1" onhover="action(showHotSpot,panos/s1.tiles/thumb.jpg,Tổng thể dự án nhìn từ hướng Nam)"/>
+		<hotspot name="spot3" style="skin_hotspotstyle_line" ath="12.736" atv="2.977" distorted="false" zoom="false" linkedscene="scene_s7" onhover="action(showHotSpot,panos/s4.tiles/thumb.jpg,Cảnh quan hồ San Hô)"/>
+		<hotspot name="spot4" style="skin_hotspotstyle_line" ath="124.196" atv="-3.928" distorted="false" zoom="false" linkedscene="scene_s7" onhover="action(showHotSpot,panos/s7.tiles/thumb.jpg,BIỂN HỒ NƯỚC MẶN)"/>
+
+        <!--        noi khu-->
+		<hotspot name="spot7" style="skin_hotspotstyle_nen" ath="-131.448" atv="-6.038" distorted="false" zoom="false" linkedscene="scene_s2" />
+		<hotspot name="spot8" style="skin_hotspotstyle_nen" ath="-159.892" atv="-6.229" distorted="false" zoom="false" linkedscene="scene_s2" />
+		<hotspot name="spot9" style="skin_hotspotstyle_nen" ath="176.157" atv="-1.350" distorted="false" zoom="false" linkedscene="scene_s2" />
+		<hotspot name="spot10" style="skin_hotspotstyle_nen" ath="-160.271" atv="3.420" distorted="false" zoom="false" linkedscene="scene_s2" />
+		<hotspot name="spot11" style="skin_hotspotstyle_nen" ath="-95.410" atv="4.315" distorted="false" zoom="false" linkedscene="scene_s2" />
+		<hotspot name="spot12" style="skin_hotspotstyle" ath="4.434" atv="38.316" distorted="false" zoom="false" linkedscene="scene_s2" />
+		<hotspot name="spot13" style="skin_hotspotstyle_nen" ath="-33.353" atv="2.283" distorted="false" zoom="false" linkedscene="scene_s2" />
+		<hotspot name="spot14" style="skin_hotspotstyle" ath="22.353" atv="3.067" distorted="false" zoom="false" linkedscene="scene_s7" />
+		<hotspot name="spot15" style="skin_hotspotstyle_nen" ath="62.803" atv="7.656" distorted="false" zoom="false" linkedscene="scene_s2" />
+        
+        <layer name="text7" url="textfield.swf" css="font-weight: bold;" parent="hotspot[spot7]" align="center" html="SAPPHIRE 1" background="false" />
+        <layer name="text8" url="textfield.swf" css="font-weight: bold;" parent="hotspot[spot8]" align="center" html="SAPPHIRE 2" background="false" />
+        <layer name="text9" url="textfield.swf" css="font-weight: bold;" parent="hotspot[spot9]" align="center" html="ĐH VinUni" background="false" />
+        <layer name="text10" url="textfield.swf" css="font-weight: bold;" parent="hotspot[spot10]" align="center" html="SAN HÔ" background="false" />
+        <layer name="text11" url="textfield.swf" css="font-weight: bold;" parent="hotspot[spot11]" align="center" html="NGỌC TRAI" background="false" />
+        <layer name="text12" url="textfield.swf" css="font-weight: bold; color:yellow;font-size:20px" parent="hotspot[spot12]" align="center" html="Hồ Ngọc Trai" background="false" />
+        <layer name="text13" url="textfield.swf" css="font-weight: bold;" parent="hotspot[spot13]" align="center" html="SAO BIỂN" background="false" />
+        <layer name="text14" url="textfield.swf" css="font-weight: bold; color:yellow;" parent="hotspot[spot14]" align="center" html="BIỂN HỒ NƯỚC MẶN" background="false" />
+        <layer name="text15" url="textfield.swf" css="font-weight: bold;" parent="hotspot[spot15]" align="center" html="HẢI ÂU" background="false" />
+        
+		
+		<hotspot name="spot17" style="skin_hotspotstyle" ath="-134.670" atv="2.726" linkedscene="scene_s2" />
+		
+		<hotspot name="spot19" style="skin_hotspotstyle" ath="-15.486" atv="-1.445" linkedscene="scene_s2" />
+        
+
+        <layer name="text17" url="textfield.swf" css="font-weight: bold;color:yellow; font-size:10px" parent="hotspot[spot17]" align="center" html="ĐẠI LỘ 52" background="false" />
+
+        <layer name="text19" url="textfield.swf" css="font-weight: bold; color:yellow; font-size:14px" parent="hotspot[spot19]" align="center" html="QUỐC LỘ 5" background="false" />
+        
+        		<hotspot name="spot22" style="skin_hotspotstyle" ath="123.882" atv="2.236" linkedscene="scene_s2" />
+		<hotspot name="spot23" style="skin_hotspotstyle" ath="22.080" atv="-1.274" linkedscene="scene_s2" />
+		<hotspot name="spot24" style="skin_hotspotstyle_nen" distorted="false" zoom="false" ath="-99.401" atv="-6.012" linkedscene="scene_s2" />
+		
+		
+		<layer name="text22" url="textfield.swf" css="font-weight: bold;color:yellow;font-size:16px" parent="hotspot[spot22]" align="center" html="BV VINMEC" background="false" />
+        <layer name="text23" url="textfield.swf" css="font-weight: bold; color:yellow; font-size:12px" parent="hotspot[spot23]" align="center" html="VINCOM MEGAMALL" background="false" />
+        <layer name="text24" url="textfield.swf" css="font-weight: bold;" parent="hotspot[spot24]" align="center" html="RUBY" background="false" />
+		
+				
+		<hotspot name="spot27" style="skin_hotspotstyle_nen" ath="-171.120" atv="-4.076" linkedscene="scene_s2" />
+		
+        <layer name="text27" url="textfield.swf" css="font-weight: bold;" parent="hotspot[spot27]" align="center" html="Tòa nhà văn phòng" background="false" />
+		<hotspot name="spot5" style="skin_hotspotstyle_line" ath="-149.184" atv="-8.175" linkedscene="scene_s2" onhover="action(showHotSpot,panos/s2.tiles/thumb.jpg,Tổng thể hướng nhìn từ đường cao tốc Hà Nội - Hải Phòng)"/>
+		<hotspot name="spot6" style="skin_hotspotstyle_line" ath="-103.430" atv="-11.123" linkedscene="scene_s3" onhover="action(showHotSpot,panos/s3.tiles/thumb.jpg,Tổng thể dự án nhìn từ hướng Tây Bắc)"/>
+	</scene>
+
+	<scene name="scene_s7" title="s7" onstart="" thumburl="panos/s7.tiles/thumb.jpg" lat="20.99339986" lng="105.95667861" heading="0.0">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/s7.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/s7.tiles/pano_%s.jpg" />
+		</image>
+		<hotspot name="spot1" style="skin_hotspotstyle_line" ath="-39.183" atv="1.143" distorted="false" zoom="false" linkedscene="scene_s6" onhover="action(showHotSpot,panos/s6.tiles/thumb.jpg,Hồ Ngọc Trai)"/>
+		<hotspot name="spot2" style="skin_hotspotstyle_line" ath="-59.709" atv="-3.813" distorted="false" zoom="false" linkedscene="scene_s5" onhover="action(showHotSpot,panos/s5.tiles/thumb.jpg,Trường Đại học VinUni)"/>
+		<hotspot name="spot3" style="skin_hotspotstyle_line" ath="-84.890" atv="-4.798" distorted="false" zoom="false" linkedscene="scene_s1" onhover="action(showHotSpot,panos/s1.tiles/thumb.jpg,Tổng thể dự án nhìn từ hướng Nam)"/>
+		<hotspot name="spot4" style="skin_hotspotstyle_line" ath="-7.380" atv="-5.607" distorted="false" zoom="false" linkedscene="scene_s4" onhover="action(showHotSpot,panos/s4.tiles/thumb.jpg,Cảnh quan hồ San Hô)"/>
+
+        <!--        noi khu-->
+		<hotspot name="spot7" style="skin_hotspotstyle_nen" ath="-25.618" atv="-4.654" distorted="false" zoom="false" linkedscene="scene_s2" />
+		<hotspot name="spot8" style="skin_hotspotstyle_nen" ath="-45.793" atv="-4.594" distorted="false" zoom="false" linkedscene="scene_s2" />
+		<hotspot name="spot9" style="skin_hotspotstyle_nen" ath="-57.889" atv="-1.590" distorted="false" zoom="false" linkedscene="scene_s2" />
+		<hotspot name="spot10" style="skin_hotspotstyle_nen" ath="-67.706" atv="0.878" distorted="false" zoom="false" linkedscene="scene_s2" />
+		<hotspot name="spot11" style="skin_hotspotstyle_nen" ath="-15.799" atv="1.529" distorted="false" zoom="false" linkedscene="scene_s2" />
+		<hotspot name="spot12" style="skin_hotspotstyle" ath="-31.237" atv="5.980" distorted="false" zoom="false" linkedscene="scene_s2" />
+		<hotspot name="spot13" style="skin_hotspotstyle_nen" ath="20.577" atv="5.213" distorted="false" zoom="false" linkedscene="scene_s2" />
+		<hotspot name="spot14" style="skin_hotspotstyle" ath="38.860" atv="61.076" distorted="false" zoom="false" linkedscene="scene_s2" />
+		<hotspot name="spot15" style="skin_hotspotstyle_nen" ath="-118.241" atv="25.668" distorted="false" zoom="false" linkedscene="scene_s2" />
+        
+        <layer name="text7" url="textfield.swf" css="font-weight: bold;" parent="hotspot[spot7]" align="center" html="SAPPHIRE 1" background="false" />
+        <layer name="text8" url="textfield.swf" css="font-weight: bold;" parent="hotspot[spot8]" align="center" html="SAPPHIRE 2" background="false" />
+        <layer name="text9" url="textfield.swf" css="font-weight: bold;" parent="hotspot[spot9]" align="center" html="ĐH VinUni" background="false" />
+        <layer name="text10" url="textfield.swf" css="font-weight: bold;" parent="hotspot[spot10]" align="center" html="SAN HÔ" background="false" />
+        <layer name="text11" url="textfield.swf" css="font-weight: bold;" parent="hotspot[spot11]" align="center" html="NGỌC TRAI" background="false" />
+        <layer name="text12" url="textfield.swf" css="font-weight: bold; color:yellow;" parent="hotspot[spot12]" align="center" html="Hồ Ngọc Trai" background="false" />
+        <layer name="text13" url="textfield.swf" css="font-weight: bold;" parent="hotspot[spot13]" align="center" html="SAO BIỂN" background="false" />
+        <layer name="text14" url="textfield.swf" css="font-weight: bold; color:yellow;" parent="hotspot[spot14]" align="center" html="BIỂN HỒ NƯỚC MẶN" background="false" />
+        <layer name="text15" url="textfield.swf" css="font-weight: bold;" parent="hotspot[spot15]" align="center" html="HẢI ÂU" background="false" />
+        
+		<hotspot name="spot16" style="skin_hotspotstyle" ath="-92.773" atv="-1.237" linkedscene="scene_s2" />
+		
+		
+		<hotspot name="spot19" style="skin_hotspotstyle" ath="69.290" atv="-0.603" linkedscene="scene_s2" />
+        
+        <layer name="text16" url="textfield.swf" css="font-weight: bold;color:yellow; font-size:10px" parent="hotspot[spot16]" align="center" html="CAO TỐC HÀ NỘI - HẢI PHÒNG " background="false" />
+
+
+        <layer name="text19" url="textfield.swf" css="font-weight: bold; color:yellow; font-size:20px" parent="hotspot[spot19]" align="center" html="QUỐC LỘ 5" background="false" />
+        
+        		<hotspot name="spot22" style="skin_hotspotstyle" ath="-84.401" atv="0.482" linkedscene="scene_s2" />
+		<hotspot name="spot23" style="skin_hotspotstyle" ath="117.329" atv="4.265" linkedscene="scene_s2" />
+		<hotspot name="spot24" style="skin_hotspotstyle_nen" distorted="false" zoom="false" ath="-3.048" atv="-4.020" linkedscene="scene_s2" />
+		<hotspot name="spot25" style="skin_hotspotstyle" ath="-76.821" atv="-2.259" linkedscene="scene_s2" />
+		
+		<layer name="text22" url="textfield.swf" css="font-weight: bold;color:yellow;font-size:16px" parent="hotspot[spot22]" align="center" html="BV VINMEC" background="false" />
+        <layer name="text23" url="textfield.swf" css="font-weight: bold; color:yellow; font-size:12px" parent="hotspot[spot23]" align="center" html="VINCOM MEGAMALL" background="false" />
+        <layer name="text24" url="textfield.swf" css="font-weight: bold;" parent="hotspot[spot24]" align="center" html="RUBY" background="false" />
+        <layer name="text25" url="textfield.swf" css="font-weight: bold; color:yellow; font-size:16px" parent="hotspot[spot25]" align="center" html="VIN WONDERS" background="false" />
+				
+		
+        
+	</scene>
+
+
+</krpano>
